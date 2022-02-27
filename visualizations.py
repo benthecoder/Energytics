@@ -83,10 +83,9 @@ def hover_label(row):
     )
 
 
-def plot_map_pie(state: str, year: int):
+def plot_map(year: int):
 
     map_df = sum_rev.groupby(["year"]).filter(lambda x: (x["year"] == year).any())
-    pie_df = map_df.groupby(["state"]).filter(lambda x: (x["state"] == state).any())
 
     map_fig = go.Figure(
         data=go.Choropleth(
@@ -116,7 +115,7 @@ def plot_map_pie(state: str, year: int):
         annotations=[
             dict(
                 x=0,
-                y=-0.1,
+                y=-0.05,
                 xref="paper",
                 yref="paper",
                 text="Source: U.S. Energy Information Administration & International Renewable Energy Agency (IRENA)",
@@ -125,6 +124,73 @@ def plot_map_pie(state: str, year: int):
         ],
         width=1700,
         height=800,
+    )
+
+    return map_fig
+
+
+def plot_src_map(year: int, source: str):
+
+    df_filter_year = energy_df.groupby(["year"]).filter(
+        lambda x: (x["year"] == year).any()
+    )
+
+    df_filter_source = df_filter_year.groupby(["source"]).filter(
+        lambda x: (x["source"] == source).any()
+    )
+
+    fig = go.Figure(
+        data=go.Choropleth(
+            locations=df_filter_source["code"],
+            z=df_filter_source["generation"],
+            text=df_filter_source.apply(
+                lambda row: f"{row['state']}<br></br>{row['generation']} Megawatthours",
+                axis=1,
+            ),
+            hoverinfo="text",
+            locationmode="USA-states",
+            colorscale="Reds",
+            autocolorscale=False,
+            marker_line_color="darkgray",
+            marker_line_width=0.5,
+            colorbar_title="Generation<br>Kilowatthours",
+        )
+    )
+
+    fig.update_layout(
+        title_text="Energy Production Revenue by State",
+        geo=dict(
+            scope="usa",
+            projection=go.layout.geo.Projection(type="albers usa"),
+            showcoastlines=False,
+            showlakes=True,
+            lakecolor="rgb(255, 255, 255)",
+        ),
+        width=1700,
+        height=800,
+    )
+
+    return fig
+
+
+def plot_scatter_pie(state: str, year: str):
+
+    df_state = energy_df.groupby(["state"]).filter(
+        lambda x: (x["state"] == state).any()
+    )
+    df_total_rev = df_state.groupby(["year"]).sum().reset_index()
+    df_total_rev.rename(
+        {"year": "Years", "revenue": "Total Revenue ($1 million)"}, axis=1, inplace=True
+    )
+
+    map_df = sum_rev.groupby(["year"]).filter(lambda x: (x["year"] == year).any())
+    pie_df = map_df.groupby(["state"]).filter(lambda x: (x["state"] == state).any())
+
+    sctr_fig = px.line(
+        df_total_rev,
+        x="Years",
+        y="Total Revenue ($1 million)",
+        title=f"Total Revenue Over the Years for {state}",
     )
 
     pie_fig = px.pie(
@@ -136,27 +202,7 @@ def plot_map_pie(state: str, year: int):
 
     pie_fig.update_layout(
         width=1000,
-        height=800,
+        height=500,
     )
 
-    return map_fig, pie_fig
-
-
-def plot_scatter(state: str):
-
-    df_state = energy_df.groupby(["state"]).filter(
-        lambda x: (x["state"] == state).any()
-    )
-    df_total_rev = df_state.groupby(["year"]).sum().reset_index()
-    df_total_rev.rename(
-        {"year": "Years", "revenue": "Total Revenue ($1 million)"}, axis=1, inplace=True
-    )
-
-    sctr_fig = px.line(
-        df_total_rev,
-        x="Years",
-        y="Total Revenue ($1 million)",
-        title=f"Total Revenue Over the Years for {state}",
-    )
-
-    return sctr_fig
+    return sctr_fig, pie_fig
