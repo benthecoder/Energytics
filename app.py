@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 from visualizations import *
 
@@ -15,11 +16,12 @@ def main():
     st.caption("Analytics and Insights for everything energy-related")
 
     st.subheader("Energy Production cost by State and Energy Source")
+
     st.caption(
         "We are using energy cost and production datasets in order to help energy companies decern what energy source would be most benficial for them to invest in."
     )
-
     col1, col2 = st.columns(2)
+
     chosen_year = col1.slider("Choose a year", 2010, 2020, 2020)
     chosen_state = col2.selectbox("Choose state", list(energy_df["state"].unique()))
 
@@ -35,7 +37,7 @@ def main():
     st.markdown(
         """
     ---
-    ### Datasets we used to build this
+    ### Datasets we used to build this 
     1. [U.S. Energy Information Administration](https://www.eia.gov/)
     1. [International Renewable Energy Agency (IRENA)](https://www.irena.org/)
     """

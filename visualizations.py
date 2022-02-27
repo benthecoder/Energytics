@@ -9,6 +9,8 @@ import random
 import os
 
 energy_df = pd.read_csv("data/energy_cost.csv")
+train = pd.read_csv("data/Ashrae/buildings_train.csv")
+
 # get total revenue by year and state
 sum_rev = energy_df.groupby(["year", "state", "code"]).sum().reset_index()
 sum_rev.rename({"revenue": "sum_revenue"}, axis=1, inplace=True)
