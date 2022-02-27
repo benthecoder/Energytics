@@ -26,7 +26,7 @@ TODO
 - [@Benedict Neo](https://www.linkedin.com/in/benedictn)
 - [@Diwaker Sinha](https://www.linkedin.com/in/diwaker-sinha-072aa118b/)
 - [@Geitanksha Tandon](https://www.linkedin.com/in/geitanksha/)
-- [@Soham Kulkarni](https://www.linkedin.com/in/sohamk2/)
+- [@Soham Kulkarni](https://www.linkedin.com/in/soham-kulkarni-503764227/)
 - [@Tan Wei Chun](https://www.linkedin.com/in/wei-chun/)
 
 ## Future Goals
