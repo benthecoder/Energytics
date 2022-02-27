@@ -19,6 +19,7 @@ def main():
         "We are using energy cost and production datasets in order to help energy companies decern what energy source would be most benficial for them to invest in."
     )
 
+    col1, col2 = st.columns(2)
     chosen_year = col1.slider("Choose a year", 2010, 2020, 2020)
     chosen_state = col2.selectbox("Choose state", list(energy_df["state"].unique()))
 
