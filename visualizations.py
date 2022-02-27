@@ -7,6 +7,9 @@ import numpy as np
 import datetime
 import random
 import os
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 
 energy_df = pd.read_csv("data/energy_cost.csv")
 train = pd.read_csv("data/Ashrae/buildings_train.csv")
@@ -206,3 +209,14 @@ def plot_scatter_pie(state: str, year: str):
     )
 
     return sctr_fig, pie_fig
+
+
+def scatterplt(var):
+    plt.figure(figsize=(13, 7))
+    sns.set_theme()
+    sns.scatterplot(data=train, x=var, y="meter_reading", alpha=0.1)
+    x_label = var
+    plt.xlabel(x_label)
+    plt.ylabel("Energy Consumption (kWh)")
+    plt.title("Energy consumption based on" + str(x_label))
+    return plt
