@@ -12,7 +12,7 @@ def main():
         layout="wide",
     )
 
-    st.title("Energytics")
+    st.title("🌊 🏭 ⚡ Energytics  🔌 🔋")
     st.caption("Analytics and Insights for everything energy-related")
 
     st.subheader("Energy Production cost by State and Energy Source")
@@ -52,10 +52,8 @@ def main():
 
     st.markdown(
         """
-    Something something
-    
-    ---
-    """
+        ---
+        """
     )
     st.subheader("Getting a closer look at each state")
 
