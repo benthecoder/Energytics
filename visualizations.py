@@ -198,7 +198,7 @@ def plot_scatter_pie(state: str, year: str):
 
     pie_fig = px.pie(
         pie_df,
-        values=pie_df["source_perc"].tolist()[0],
+        values=pie_df["source_perc"].values[0],
         names=source_names,
         title=f"Percentage of Revenue from Resource for {state} in {year}",
     )
