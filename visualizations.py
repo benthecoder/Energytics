@@ -158,7 +158,7 @@ def plot_src_map(year: int, source: str):
     )
 
     fig.update_layout(
-        title_text="Energy Production Revenue by State",
+        title_text=f"Energy Generation for {source} in {year}",
         geo=dict(
             scope="usa",
             projection=go.layout.geo.Projection(type="albers usa"),
