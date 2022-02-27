@@ -186,11 +186,11 @@ def main():
             )
 
             user_input = [[sq_feet, week, year, edu, hour, month, day]]
-            pred = loaded_model.predict(user_input)
 
             submitted = st.form_submit_button("Submit")
 
             if submitted:
+                pred = loaded_model.predict(user_input)
                 submit = True
 
         if submit is False:
