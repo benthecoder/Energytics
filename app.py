@@ -21,7 +21,7 @@ def main():
         "We are using energy cost and production datasets in order to help energy companies decern what energy source would be most benficial for them to invest in."
     )
 
-    chosen_year = st.slider("Choose a year", 2010, 2020, 2020)
+    chosen_year = st.slider("Choose a year", 2010, 2020, 2010)
 
     map_plt = plot_map(chosen_year)
     # source_plt = plot_src_map(chosen_year)
@@ -46,7 +46,7 @@ def main():
         "Choose resource", list(energy_df["source"].unique())
     )
 
-    chosen_year = col2.slider("Choose a year", 2010, 2020, 2020, key="map")
+    chosen_year = col2.slider("Choose a year", 2010, 2020, 2010, key="map")
 
     st.plotly_chart(plot_src_map(chosen_year, chosen_source), use_container_width=True)
 
@@ -61,7 +61,7 @@ def main():
 
     chosen_state = col1.selectbox("Choose state", list(energy_df["state"].unique()))
 
-    chosen_year = col2.slider("Choose a year", 2010, 2020, 2020, key="piechart")
+    chosen_year = col2.slider("Choose a year", 2010, 2020, 2010, key="piechart")
 
     scttr_plt, pie_plt = plot_scatter_pie(chosen_state, chosen_year)
 
