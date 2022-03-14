@@ -125,7 +125,7 @@ def plot_map(year: int):
                 showarrow=False,
             )
         ],
-        width=1700,
+        width=500,
         height=800,
     )
 
@@ -220,3 +220,68 @@ def scatterplt(var):
     plt.ylabel("Energy Consumption (kWh)")
     plt.title("Energy consumption based on" + str(x_label))
     return plt
+
+
+def ashrae_data_viz():
+    hist_plt = px.histogram(
+        train,
+        x="meter_reading",
+        log_y=True,
+        labels={
+            "meter_reading": "Energy Consumption (kWh)",
+            "count": "Count (log)",
+        },
+        title="Counts of Energy Consumption Readings",
+    )
+
+    hist_plt.update_layout(height=600, width=800)
+
+    st.plotly_chart(hist_plt, use_container_width=True)
+
+    plt.figure(figsize=(13, 6))
+    sns.boxplot(data=train, x="primary_use", y="meter_reading")
+    plt.xlabel("Building Usage")
+    plt.ylabel("Energy Consumption (kWh)")
+    plt.title("Energy Distribution based on Building Usage")
+    plt.xticks(rotation=45)
+
+    st.pyplot(plt)
+
+    plt.figure(figsize=(13, 7))
+    sns.set_theme()
+    sns.boxplot(data=train, x="year_built", y="meter_reading")
+    plt.xlabel("Year Building was Constructed")
+    plt.ylabel("Energy Consumption (kWh)")
+    plt.title("Energy Distribution based on Construction year")
+    plt.xticks(rotation=45)
+
+    st.pyplot(plt)
+
+    plt.figure(figsize=(13, 7))
+    sns.set_theme()
+    sns.boxplot(data=train, x="cloud_coverage", y="meter_reading")
+    plt.xlabel("Cloud Coverage")
+    plt.ylabel("Energy Consumption (kWh)")
+    plt.title("Energy consumption based on cloud coverage")
+    st.pyplot(plt)
+
+    fig = px.bar(
+        train.groupby(["wind_speed", "wind_direction"]).mean().reset_index(),
+        x="wind_speed",
+        y="meter_reading",
+        color="wind_speed",
+        labels={
+            "year_built": "Year building was constructed",
+            "meter_reading": "Energy Consumption (kWh)",
+        },
+        title="Energy Consmption vs Wind Conditions",
+        animation_frame="wind_direction",
+        animation_group="wind_speed",
+        range_y=[0, 450],
+        range_x=[0, 20],
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    vars = st.selectbox("Choose variables to plot 👇", list(train.columns.values))
+    st.pyplot(scatterplt(vars))
