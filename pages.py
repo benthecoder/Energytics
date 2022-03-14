@@ -238,10 +238,12 @@ def energy_cons():
 
     st.subheader(f"The energy consumption of your building is {pred} kWh!")
 
+    st.markdown(
+        """
+        ---
+        ### Data Source 
+        - [ASHRAE - Great Energy Predictor III](https://www.kaggle.com/c/ashrae-energy-prediction/data)
+        ### Notebook for training the model
+        - https://colab.research.google.com/drive/1b8RsxVAfBuSFnlijExt6Oef2ayF4hyFV?usp=sharing
     """
-    ---
-    ### Data Source 
-    - [ASHRAE - Great Energy Predictor III](https://www.kaggle.com/c/ashrae-energy-prediction/data)
-    ### Notebook for training the model
-    - https://colab.research.google.com/drive/1b8RsxVAfBuSFnlijExt6Oef2ayF4hyFV?usp=sharing
-    """
+    )
