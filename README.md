@@ -1,22 +1,24 @@
-# Energytics 💡⚡
+# Energytics 💡⚡ (HackIllinois 2022)
 
 ## About
 
-An app that visualizes and predicts energy generation and consumption for companies
+An app that visualizes and predicts energy generation and consumption for companies and consumers.
 
-## Inspiration
+[Devpost Submission](https://devpost.com/software/energytics)
 
-As it stands, fossil fuels are significantly cheaper at producing energy than renewable technologies. However, this is not a sustainable solution, and we are still years away from reaching parity in efficiency between renewable sources and conventional fossil fuel sources. Moreover, businesses would not only profit from minimizing their energy consumption but also help them achieve lower CO2 emissions. Our goal is to identify, through machine learning, which features contribute the most to energy consumption so that they can be tackled to minimize the energy consumption for businesses.
+<img src="media/app/home.png" width="600">
+<img src="media/app/map1.png" width="600">
+<img src="media/app/map2.png" width="600">
+<img src="media/app/pie.png" width="600">
+<img src="media/app/pred1.png" width="600">
+<img src="media/app/pred2.png" width="600">
 
-## How we built it
+## Tech stack
 
-We initially looked for datasets that would help us with our project in order to find the factors that create energy consumption as well as various costs for energy sources. We then interpreted this data and compiled it onto a dataframe in python as we collaborated through the platform Deepnote. Through this platform, we were able to work on visualizing the data through maps and graphs.
-
-We used libraries from Plotly to help us in this endeavour. While part of our group worked on this, the rest worked on the machine learning aspect of it by working on the modelling of the projection and training the system.
-
-We experimented with using Optuna which is an open-source hyperparameter optimization framework to automate the tuning process. This was something new that we explored and the experience was very rewarding as it cut down the resource-intensive process significantly.
-
-Finally, we orchestrated the code on Streamlit so we could display the visualizations and machine learning model through a web app.
+- Streamlit (front-end)
+- Pandas, Sklearn, LightGBM (ML)
+- Plotly, Seaborn, matplotlib (data viz)
+- Open Weather Map (Weather API)
 
 ### Datasets used
 
