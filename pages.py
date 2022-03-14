@@ -140,7 +140,7 @@ def energy_cons():
         if submitted or st.session_state.load_state is True:
             delta = d - date.today()
             day_from = delta.days  # get difference in days
-            weather_pred = get_weather_pred(weather_input)
+            weather_pred = get_weather_pred(weather_input, local=False)
             st.session_state.load_state = True
 
     if st.session_state.load_state is False:
