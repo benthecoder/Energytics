@@ -42,6 +42,13 @@ def main():
         if st.button("🔌 🔋 Energy Consumption"):
             st.session_state.page = "cons"
 
+        st.markdown(
+            """
+            ---
+            ## [Github Repo](https://github.com/benthecoder/Energytics)
+            """
+        )
+
     pages[st.session_state.page]()
 
 

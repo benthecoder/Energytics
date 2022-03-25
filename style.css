@@ -3,3 +3,20 @@
   border-radius: 1rem;
   width: 14rem;
 }
+
+/* change footer
+https://discuss.streamlit.io/t/remove-made-with-streamlit-from-bottom-of-app/1370/9 */
+
+footer {
+  visibility: hidden;
+}
+
+footer:after {
+  content: 'Made with ❤️';
+  visibility: visible;
+  display: block;
+  position: relative;
+  padding: 5px;
+  top: 2px;
+  color: #d1d1d1;
+}
