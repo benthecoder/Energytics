@@ -140,7 +140,7 @@ def energy_cons():
         if submitted or st.session_state.load_state is True:
             delta = d - date.today()
             day_from = delta.days  # get difference in days
-            weather_pred = get_weather_pred(weather_input, local=False)
+            weather_pred = get_weather_pred(weather_input, local=True)
             st.session_state.load_state = True
 
     if st.session_state.load_state is False:
@@ -158,7 +158,9 @@ def energy_cons():
     # plot map
     st.map(map)
 
-    st.write("For the location above, here's what we know about the weather")
+    st.write(
+        f"For the zip code {zip_code} in {cnt_code}, here's what we know about the weather on {d.strftime('%m/%d/%Y')} at hour {hour}"
+    )
 
     st.markdown(
         f"""

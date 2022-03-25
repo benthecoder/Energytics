@@ -44,7 +44,7 @@ def get_part_of_day(x: int):
         return "day"
     elif (x > 17) and (x <= 21):
         return "eve"
-    elif (x > 21) and (x <= 4):
+    elif (x > 21) or (x <= 4):
         return "night"
 
 
