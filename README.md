@@ -1,10 +1,14 @@
 # Energytics 💡⚡ (HackIllinois 2022)
 
+<img src="media/app.gif" width="600">
+
 ## About
 
 An app that visualizes and predicts energy generation and consumption for companies and consumers.
 
 [Devpost Submission](https://devpost.com/software/energytics)
+
+## Images
 
 <img src="media/app/home.png" width="600">
 <img src="media/app/map1.png" width="600">
